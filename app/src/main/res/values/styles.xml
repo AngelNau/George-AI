@@ -4,4 +4,10 @@
         <item name="cornerSize">50%</item>
     </style>
 
+    <style name="Button.Rounded" parent="Widget.MaterialComponents.Button">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">25dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="textAllCaps">true</item>
+    </style>
 </resources>

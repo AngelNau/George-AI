@@ -3,4 +3,9 @@
     <string name="application_tabs">Application tabs.</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="add_task_button">Add task button.</string>
+    <string name="image_for_task">Image for task.</string>
+    <string name="ai_generated_image">AI generated image.</string>
+    <string name="new_task">New Task</string>
+    <string name="assistents">Assistents</string>
 </resources>

@@ -15,6 +15,7 @@
         <!--        android:theme="@style/AppTheme.AppBarOverlay"-->
 
         <androidx.appcompat.widget.Toolbar
+            android:backgroundTint="@color/dark_yellow"
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
@@ -27,6 +28,7 @@
             android:layout_width="match_parent"
             android:contentDescription="@string/application_tabs"
             android:layout_height="?attr/actionBarSize"
+            app:tabTextColor="@color/dark_yellow"
             app:tabGravity="fill"
             app:tabMode="fixed"/>
 

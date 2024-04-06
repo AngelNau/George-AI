@@ -12,7 +12,7 @@ class TabPagerAdapter(fa: FragmentActivity?, private val tabCounter: Int) : Frag
     override fun createFragment(position: Int): Fragment {
         return when (position) {
             0 -> TaskFragment()
-//            1 -> Tab2Fragment()
+//            1 -> TestFragment()
 //            2 -> Tab3Fragment()
             else -> {
                 Fragment()

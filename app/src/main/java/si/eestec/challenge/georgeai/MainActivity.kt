@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
             when (position) {
                 0 -> tab.text = "Tasks"
-//                1 -> tab.text = "Tab 2"
+//                1 -> tab.text = "How do I"
 //                2 -> tab.text = "Tab 3"
             }
         }.attach()

@@ -5,6 +5,6 @@
     <color name="light_blue">#2d738c</color>
     <color name="light_green">#cde8b1</color>
     <color name="light_yellow">#FFE79A</color>
-    <color name="dark_yellow">#FFD756</color>
     <color name="frog_green">#74D600</color>
+    <color name="dark_yellow">#FFC11E</color>
 </resources>

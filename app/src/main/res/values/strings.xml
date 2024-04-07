@@ -13,4 +13,9 @@
     <string name="date">Date</string>
     <string name="time">Time</string>
     <string name="submit2">SUBMIT</string>
+    <string name="add_task_button">Add task button.</string>
+    <string name="image_for_task">Image for task.</string>
+    <string name="ai_generated_image">AI generated image.</string>
+    <string name="new_task">New Task</string>
+    <string name="assistents">Assistents</string>
 </resources>

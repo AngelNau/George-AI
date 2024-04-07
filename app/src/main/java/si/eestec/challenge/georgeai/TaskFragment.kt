@@ -55,11 +55,16 @@ class TaskFragment : Fragment() {
     }
 
     private fun initListeners() {
-        _binding.newTask.setOnClickListener {
-            findNavController().navigate(TaskFragmentDirections.toAddNewTaskFragment())
+        with(_binding) {
+            newTask.setOnClickListener {
+                findNavController().navigate(TaskFragmentDirections.toAddNewTaskFragment())
+            }
+
+            assistents.setOnClickListener {
+                findNavController().navigate(TaskFragmentDirections.toGeorgeFragment())
+            }
         }
     }
-
     private fun loadTasks(): List<TaskModel> {
         val taskList: MutableList<TaskModel>
         val taskString = sharedPreferences.getString("tasks", null)

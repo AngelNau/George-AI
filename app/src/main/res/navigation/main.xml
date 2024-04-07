@@ -11,6 +11,15 @@
         <action
             android:id="@+id/toAddNewTaskFragment"
             app:destination="@+id/add_new_task_fragment"/>
+        <action
+            android:id="@+id/toGeorgeFragment"
+            app:destination="@+id/george_assistant_fragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/george_assistant_fragment"
+        android:name="si.eestec.challenge.georgeai.GeorgeAssistantFragment">
+            
     </fragment>
 
     <fragment

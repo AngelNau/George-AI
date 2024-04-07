@@ -18,4 +18,11 @@
     <string name="ai_generated_image">AI generated image.</string>
     <string name="new_task">New Task</string>
     <string name="assistents">Assistents</string>
+    <string name="george_ai">George AI</string>
+    <string name="visualize">Visualize</string>
+    <string name="add_file_button">Add file button.</string>
+    <string name="send_prompt_button">Send prompt button.</string>
+    <string name="enter_message">Type your message here</string>
+    <string name="test_me">Test Me</string>
+    <string name="george_the_monkey">George the monkey.</string>
 </resources>

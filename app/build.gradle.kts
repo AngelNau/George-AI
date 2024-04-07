@@ -60,6 +60,7 @@ dependencies {
     implementation("androidx.navigation:navigation-dynamic-features-fragment:2.7.7")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
     implementation("com.squareup.okhttp3:okhttp:4.12.0")
+    implementation("com.itextpdf:itextg:5.5.10")
     implementation ("androidx.recyclerview:recyclerview:1.2.1")
 
 }

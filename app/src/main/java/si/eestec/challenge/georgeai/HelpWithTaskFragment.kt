@@ -91,7 +91,6 @@ class HelpWithTaskFragment : Fragment() {
                         if (choicesArray.length() > 0) {
                             _binding.chatGPTGenerateInstructionsView.text = choicesArray.getJSONObject(0).getJSONObject("message").getString("content")
                         }
-
                     }
                 }
             }

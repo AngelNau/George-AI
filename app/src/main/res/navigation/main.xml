@@ -22,6 +22,17 @@
     <fragment
         android:id="@+id/george_assistant_fragment"
         android:name="si.eestec.challenge.georgeai.GeorgeAssistantFragment">
+        <action
+            android:id="@+id/toTestFragment"
+            app:destination="@+id/test_fragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/test_fragment"
+        android:name="si.eestec.challenge.georgeai.TestFragment">
+        <argument
+            android:name="dataForTest"
+            app:argType="string"/>
     </fragment>
 
     <fragment

@@ -14,24 +14,33 @@
         <action
             android:id="@+id/toGeorgeFragment"
             app:destination="@+id/george_assistant_fragment"/>
+        <action
+            android:id="@+id/toHelpFragment"
+            app:destination="@+id/help_fragment"/>
     </fragment>
 
     <fragment
         android:id="@+id/george_assistant_fragment"
         android:name="si.eestec.challenge.georgeai.GeorgeAssistantFragment">
-            
     </fragment>
 
     <fragment
         android:id="@+id/add_new_task_fragment"
         android:name="si.eestec.challenge.georgeai.AddNewTaskFragment"
         tools:layout="@layout/fragment_add_new_task">
-
         <action
             android:id="@+id/action_add_new_task_fragment_to_task_fragment"
             app:destination="@id/task_fragment" />
     </fragment>
 
-
-
+    <fragment
+        android:id="@+id/help_fragment"
+        android:name="si.eestec.challenge.georgeai.HelpWithTaskFragment">
+        <argument
+            android:name="description"
+            app:argType="string"/>
+        <action
+            android:id="@+id/toTaskFragment"
+            app:destination="@+id/task_fragment"/>
+    </fragment>
 </navigation>

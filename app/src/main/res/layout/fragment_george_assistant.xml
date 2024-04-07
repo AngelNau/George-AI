@@ -1,22 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/light_yellow"
     >
-
-    <!-- Icon ImageView -->
-
-    <!-- Title -->
-
-    <!-- Speaker Button -->
-
-    <!-- Test Me Button -->
-    <!-- Visualize Button -->
-
-    <!-- Chat ScrollView -->
 
     <LinearLayout
         android:id="@+id/titlePhotoContainer"
@@ -38,25 +28,22 @@
             app:layout_constraintBottom_toBottomOf="@id/titleTextView"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.157" />
+            android:contentDescription="@string/george_the_monkey"/>
 
         <TextView
             android:id="@+id/titleTextView"
             android:layout_width="wrap_content"
-            android:layout_height="53dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:padding="10dp"
-            android:text="AI George"
+            android:layout_margin="24dp"
+            android:text="@string/george_ai"
             android:textSize="25sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.275"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
+            app:layout_constraintTop_toTopOf="parent"/>
 
     </LinearLayout>
-
-    <!-- Message TextInputLayout -->
 
     <Button
         android:id="@+id/testButton"
@@ -64,30 +51,39 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:backgroundTint="@color/dark_yellow"
-        android:text="Test Me"
-        android:textSize="15dp"
+        android:text="@string/test_me"
+        android:textSize="15sp"
         app:layout_constraintEnd_toStartOf="@+id/visualizeButton"
-        tools:layout_editor_absoluteY="90dp"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="90dp"/>
 
     <ScrollView
         android:id="@+id/chatScrollView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="16dp"
+        android:background="@drawable/rounded_corners"
         app:layout_constraintBottom_toTopOf="@id/messageTextInputLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/speakerButton"
-        app:layout_constraintVertical_bias="0.0"
-        android:background="@drawable/rounded_corners">
+        app:layout_constraintVertical_bias="0.0">
 
         <LinearLayout
-            android:id="@+id/chatLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/response_window"
+            android:textSize="16sp"
+            android:fontFamily=""
+            android:textColor="@color/black"
+            tools:text="HELLO MY NAME GEORGE"
+            android:layout_margin="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
         </LinearLayout>
 
@@ -95,31 +91,27 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/messageTextInputLayout"
+        style="@style/ThemeOverlay.Material3.TextInputEditText.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        app:hintTextColor="@color/white"
         android:textColorHint="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:boxStrokeColor="@drawable/white_color_input"
-        style="@style/ThemeOverlay.Material3.TextInputEditText.OutlinedBox">
+        app:hintTextColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/messageEditText"
             android:layout_width="248dp"
             android:layout_height="72dp"
             android:textColor="@color/black"
-            android:hint="Type your message here" />
+            android:hint="@string/enter_message"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <!-- Send Button -->
-
-    <!-- Attach Button -->
-
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/attach"
+        android:id="@+id/send_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
@@ -135,10 +127,11 @@
         app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.Round"
         app:srcCompat="@drawable/send_icon"
         app:tint="@android:color/white"
-        app:useCompatPadding="true" />
+        app:useCompatPadding="true"
+        android:contentDescription="@string/send_prompt_button"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/send"
+        android:id="@+id/attach_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
@@ -152,7 +145,8 @@
         app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.Round"
         app:srcCompat="@drawable/ic_add_entry"
         app:tint="@android:color/white"
-        app:useCompatPadding="true" />
+        app:useCompatPadding="true"
+        android:contentDescription="@string/add_file_button"/>
 
     <Button
         android:id="@+id/visualizeButton"
@@ -160,11 +154,11 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:backgroundTint="@color/dark_yellow"
-        android:text="Visualize"
-        android:textSize="15dp"
+        android:text="@string/visualize"
+        android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteY="90dp"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="90dp"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/speakerButton"
@@ -177,8 +171,8 @@
         app:layout_constraintEnd_toStartOf="@+id/testButton"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteY="88dp"
-        tools:ignore="MissingConstraints" />
-
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

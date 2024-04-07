@@ -9,12 +9,19 @@
         <action
             android:id="@+id/toCreateTaskFragment"
             app:destination="@+id/create_task_fragment"/>
+        <action
+            android:id="@+id/toGeorgeFragment"
+            app:destination="@+id/george_assistant_fragment"/>
     </fragment>
 
     <fragment
         android:id="@+id/create_task_fragment"
         android:name="si.eestec.challenge.georgeai.CreateTaskFragment">
+    </fragment>
 
+    <fragment
+        android:id="@+id/george_assistant_fragment"
+        android:name="si.eestec.challenge.georgeai.GeorgeAssistantFragment">
     </fragment>
 
 </navigation>

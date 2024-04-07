@@ -1,59 +1,89 @@
 package si.eestec.challenge.georgeai
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RadioButton
+import androidx.navigation.fragment.navArgs
+import com.google.android.material.snackbar.Snackbar
+import kotlinx.serialization.json.JsonObject
+import org.json.JSONArray
+import org.json.JSONObject
+import si.eestec.challenge.georgeai.databinding.FragmentTaskBinding
+import si.eestec.challenge.georgeai.databinding.FragmentTestBinding
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [TestFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class TestFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
-
+    private lateinit var _binding: FragmentTestBinding
+    private val args by navArgs<TestFragmentArgs>()
+    private lateinit var answer1: String
+    private lateinit var answer2: String
+    private lateinit var answer3: String
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_test, container, false)
+    ): View {
+        _binding = FragmentTestBinding.inflate(inflater, container, false)
+        setData()
+        initListeners()
+        return _binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment TestFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            TestFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    private fun initListeners() {
+        with(_binding) {
+            checkButton.setOnClickListener {
+                val first = _binding.root.findViewById<RadioButton>(radioGroup1.checkedRadioButtonId)
+                val second = _binding.root.findViewById<RadioButton>(radioGroup2.checkedRadioButtonId)
+                val third = _binding.root.findViewById<RadioButton>(radioGroup3.checkedRadioButtonId)
+                var correct = ""
+                var incorrect = ""
+                if(first.text == answer1) {
+                    correct += " 1 "
+                } else {
+                    incorrect += " 1 "
                 }
+                if(second.text == answer2) {
+                    correct += " 2 "
+                } else {
+                    incorrect += " 2 "
+                }
+                if(third.text == answer3) {
+                    correct += " 3 "
+                } else {
+                    incorrect += " 3 "
+                }
+                Snackbar.make(_binding.root, "Correct: $correct \n Incorrect: $incorrect", Snackbar.LENGTH_LONG).show()
             }
+        }
+    }
+
+    private fun setData() {
+        Log.d("Test", args.dataForTest)
+        val test = JSONObject(args.dataForTest).getJSONArray("test")
+        with(_binding) {
+            var question = JSONObject(test[0].toString())
+            var answers = question.getJSONArray("answers")
+            question1.text = question.getString("question")
+            q1ans1.text = answers[0].toString()
+            q1ans2.text = answers[1].toString()
+            q1ans3.text = answers[2].toString()
+            answer1 = question.getString("correct_answer")
+            question = JSONObject(test[1].toString())
+            answers = question.getJSONArray("answers")
+            question2.text = question.getString("question")
+            q2ans1.text = answers[0].toString()
+            q2ans2.text = answers[1].toString()
+            q2ans3.text = answers[2].toString()
+            answer2 = question.getString("correct_answer")
+            question = JSONObject(test[2].toString())
+            answers = question.getJSONArray("answers")
+            question3.text = question.getString("question")
+            q3ans1.text = answers[0].toString()
+            q3ans2.text = answers[1].toString()
+            q3ans3.text = answers[2].toString()
+            answer3 = question.getString("correct_answer")
+        }
     }
 }

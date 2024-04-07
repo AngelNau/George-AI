@@ -12,9 +12,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import java.io.IOException
 import java.util.Locale
+import kotlinx.serialization.json.Json
 import okhttp3.Call
 import okhttp3.Callback
 import okhttp3.MediaType.Companion.toMediaType
@@ -30,6 +32,15 @@ class GeorgeAssistantFragment : Fragment() {
     private lateinit var _binding: FragmentGeorgeAssistantBinding
     private lateinit var tts: TextToSpeech
     private lateinit var okHttpClient: OkHttpClient
+
+    private val dataFormat = "{\\n\\\"test\\\": [\\n  {\\n    \\\"question\\\": \\\"What are the two basic security levels in low level information flow analysis?\\\",\\n    \\\"answers\\\": [\\\"high and low\\\", \\\"public and private\\\", \\\"secure and non-secure\\\"],\\n    \\\"correct_answer\\\": \\\"high and low\\\"\\n  },\\n  {\\n    \\\"question\\\": \\\"Which security level denotes a publicly observable variable?\\\",\\n    \\\"answers\\\": [\\\"high\\\", \\\"low\\\", \\\"none\\\"],\\n    \\\"correct_answer\\\": \\\"low\\\"\\n  },\\n  {\\n    \\\"question\\\": \\\"What information control methods can limit the information disclosure today?\\\",\\n    \\\"answers\\\": [\\\"firewalls, cryptography, access control lists\\\", \\\"passwords, biometrics, encryption\\\", \\\"firewalls, passwords, biometrics\\\"],\\n    \\\"correct_answer\\\": \\\"firewalls, cryptography, access control lists\\\"\\n  }\\n]\\n}\n" +
+        "\n" +
+        "\n" +
+        "{\n" +
+        "\t\"test\":[\n" +
+        "\t\t\n" +
+        "\t]\n" +
+        "}\n"
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -112,6 +123,49 @@ class GeorgeAssistantFragment : Fragment() {
 
             attachButton.setOnClickListener {
                 Snackbar.make(_binding.root, "TODO", Snackbar.LENGTH_SHORT).show()
+            }
+
+            testButton.setOnClickListener {
+                if(messageEditText.text.isNullOrBlank()) {
+                    Snackbar.make(_binding.root, "Please enter some text for George to summarize.", Snackbar.LENGTH_LONG).show()
+                } else {
+                    val url = "https://api.openai.com/v1/chat/completions"
+                    val mediaType = "application/json; charset=utf-8".toMediaType()
+                    val messages = JSONArray()
+                        .put(JSONObject().put("role", "system").put("content", "You are a teacher giving me a difficult test."))
+                        .put(JSONObject().put("role", "user").put("content", "I need you to make a multiple-answer test with 3 questions and 3 possible answers. Give me the data in a json format for which you would have a question field, answers field(which has all the possible answers) and a correct_answer field which holds the correct answer. Return the data in format: ${dataFormat}. Data:\n${messageEditText.text}"))
+                    val requestBody = JSONObject()
+                        .put("model", "gpt-4")
+                        .put("messages", messages)
+
+                    val request = Request.Builder()
+                        .url(url)
+                        .addHeader("Authorization", "Bearer ${BuildConfig.apiKey}")
+                        .post(requestBody.toString().toRequestBody(mediaType))
+                        .build()
+
+                    val mHandler = Handler(Looper.getMainLooper())
+                    okHttpClient.newCall(request).enqueue(object : Callback {
+                        override fun onFailure(call: Call, e: IOException) {
+                            Log.e("Api", "Failed")
+                        }
+
+                        override fun onResponse(call: Call, response: Response) {
+                            val body = response.body?.string()
+                            if (body != null) {
+                                Log.d("TAGGG", body)
+                                mHandler.post {
+                                    val jsonObject = JSONObject(body)
+                                    val choicesArray = jsonObject.getJSONArray("choices")
+                                    if (choicesArray.length() > 0) {
+                                        val contentObject = choicesArray.getJSONObject(0).getJSONObject("message").getString("content")
+                                        findNavController().navigate(GeorgeAssistantFragmentDirections.toTestFragment(contentObject.toString()))
+                                    }
+                                }
+                            }
+                        }
+                    })
+                }
             }
         }
     }

@@ -42,7 +42,8 @@
             android:layout_marginTop="10dp"
             android:layout_toRightOf="@id/iconImageView"
             android:text="Title"
-            android:textSize="20sp" />
+            android:fontFamily="@font/font_sofia"
+            android:textSize="22sp" />
 
         <TextView
             android:id="@+id/item_description"
@@ -51,7 +52,8 @@
             android:layout_below="@id/item_title"
             android:layout_marginTop="8dp"
             android:text="Description"
-            android:textSize="16sp" />
+            android:fontFamily="@font/font_sofia"
+            android:textSize="18sp" />
 
 
         <TextView
@@ -61,7 +63,8 @@
             android:layout_below="@id/item_description"
             android:layout_marginTop="7dp"
             android:text="Date"
-            android:textSize="14sp" />
+            android:fontFamily="@font/font_sofia"
+            android:textSize="17sp" />
 
         <TextView
             android:id="@+id/item_start_time"
@@ -71,7 +74,8 @@
             android:layout_marginTop="10dp"
             android:layout_marginEnd="57dp"
             android:text="Time:"
-            android:textSize="14sp" />
+            android:fontFamily="@font/font_sofia"
+            android:textSize="17sp" />
 
 
         <Button
@@ -83,8 +87,15 @@
             android:layout_marginTop="15dp"
             android:layout_marginEnd="0dp"
             android:layout_marginBottom="0dp"
+<<<<<<< HEAD
+            android:text="Help"
+            android:fontFamily="@font/font_sofia"
+            android:textSize="17sp"
+            android:textColor="@color/black"
+=======
             android:text="@string/help"
             android:textSize="14sp"
+>>>>>>> origin
             app:backgroundTint="@drawable/yellow_btn"/>
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

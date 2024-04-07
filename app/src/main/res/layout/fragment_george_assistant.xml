@@ -65,7 +65,7 @@
         android:layout_margin="16dp"
         android:textColorHint="@color/black"
         app:boxStrokeColor="@drawable/white_color_input"
-        app:hintTextColor="@color/white"
+        app:hintTextColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 

@@ -3,6 +3,16 @@
     <string name="application_tabs">Application tabs.</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="how_do_i">How do I ... ?</string>
+    <string name="question1_dummy_data">Question 1 test 123, vprashanje vprashanje vprashanje?</string>
+    <string name="here_is_answer_1">Here is answer 1</string>
+    <string name="submit">SUBMIT</string>
+    <string name="check">CHECK</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
+    <string name="date">Date</string>
+    <string name="time">Time</string>
+    <string name="submit2">SUBMIT</string>
     <string name="add_task_button">Add task button.</string>
     <string name="image_for_task">Image for task.</string>
     <string name="ai_generated_image">AI generated image.</string>

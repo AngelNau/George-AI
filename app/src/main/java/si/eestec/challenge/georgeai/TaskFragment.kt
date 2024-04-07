@@ -55,9 +55,6 @@ class TaskFragment : Fragment() {
     }
 
     private fun initListeners() {
-        _binding.newTask.setOnClickListener {
-            findNavController().navigate(TaskFragmentDirections.toCreateTaskFragment())
-        }
         with(_binding) {
             newTask.setOnClickListener {
                 findNavController().navigate(TaskFragmentDirections.toAddNewTaskFragment())

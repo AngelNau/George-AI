@@ -17,11 +17,6 @@
     </fragment>
 
     <fragment
-        android:id="@+id/create_task_fragment"
-        android:name="si.eestec.challenge.georgeai.CreateTaskFragment">
-    </fragment>
-
-    <fragment
         android:id="@+id/george_assistant_fragment"
         android:name="si.eestec.challenge.georgeai.GeorgeAssistantFragment">
             

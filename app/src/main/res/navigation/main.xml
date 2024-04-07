@@ -1,20 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     app:startDestination="@id/task_fragment">
     <fragment
         android:id="@+id/task_fragment"
-        android:name="si.eestec.challenge.georgeai.TaskFragment">
+        android:name="si.eestec.challenge.georgeai.TaskFragment"
+        tools:layout="@layout/fragment_task">
         <action
-            android:id="@+id/toCreateTaskFragment"
-            app:destination="@+id/create_task_fragment"/>
+            android:id="@+id/toAddNewTaskFragment"
+            app:destination="@+id/add_new_task_fragment"/>
     </fragment>
 
     <fragment
-        android:id="@+id/create_task_fragment"
-        android:name="si.eestec.challenge.georgeai.CreateTaskFragment">
+        android:id="@+id/add_new_task_fragment"
+        android:name="si.eestec.challenge.georgeai.AddNewTaskFragment"
+        tools:layout="@layout/fragment_add_new_task">
 
+        <action
+            android:id="@+id/action_add_new_task_fragment_to_task_fragment"
+            app:destination="@id/task_fragment" />
     </fragment>
+
+
 
 </navigation>

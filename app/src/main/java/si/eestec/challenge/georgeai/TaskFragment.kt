@@ -21,7 +21,7 @@ class TaskFragment : Fragment() {
         const val SHARED_PREF = "SHARED_PREFERENCES"
     }
     private lateinit var _binding: FragmentTaskBinding
-    private val binding get() = _binding!!
+    private val binding get() = _binding
 
     private lateinit var okHttpClient: OkHttpClient
 
@@ -45,7 +45,9 @@ class TaskFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         sharedPreferences = requireContext().getSharedPreferences(SHARED_PREF, Context.MODE_PRIVATE)
-        recyclerAdapter = RecyclerAdapter(loadTasks()){}
+        recyclerAdapter = RecyclerAdapter(loadTasks()){ description ->
+            findNavController().navigate(TaskFragmentDirections.toHelpFragment(description))
+        }
         recyclerView.adapter = recyclerAdapter
     }
 
@@ -68,10 +70,10 @@ class TaskFragment : Fragment() {
     private fun loadTasks(): List<TaskModel> {
         val taskList: MutableList<TaskModel>
         val taskString = sharedPreferences.getString("tasks", null)
-        if(taskString.isNullOrBlank()) {
-            taskList = emptyList<TaskModel>().toMutableList()
+        taskList = if(taskString.isNullOrBlank()) {
+            emptyList<TaskModel>().toMutableList()
         } else {
-            taskList = Json.decodeFromString(taskString)
+            Json.decodeFromString(taskString)
         }
 
         return taskList

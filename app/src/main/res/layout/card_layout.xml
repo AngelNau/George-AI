@@ -83,7 +83,7 @@
             android:layout_marginTop="15dp"
             android:layout_marginEnd="0dp"
             android:layout_marginBottom="0dp"
-            android:text="Help"
+            android:text="@string/help"
             android:textSize="14sp"
             app:backgroundTint="@drawable/yellow_btn"/>
     </RelativeLayout>

@@ -8,4 +8,9 @@
     <string name="here_is_answer_1">Here is answer 1</string>
     <string name="submit">SUBMIT</string>
     <string name="check">CHECK</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
+    <string name="date">Date</string>
+    <string name="time">Time</string>
+    <string name="submit2">SUBMIT</string>
 </resources>
